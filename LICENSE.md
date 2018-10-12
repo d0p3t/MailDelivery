@@ -16,7 +16,7 @@ THIS PROJECT USES A CUSTOM LICENSE. MAKE SURE TO READ IT BEFORE THINKING ABOUT D
 
 **Credits**
 
-Never should you change the credits (for example in the source code comment section) to claim this menu to be your own. 90% of the users will recognize this job as being MailDelivery, so changing the name of it and removing the credits section, is just useless. You're just being extremely rude and nodoby likes you anymore if they find out you're a big fat liar.
+Never should you change the credits (for example in the source code comment section) to claim this resource to be your own. 90% of the users will recognize this job as being MailDelivery, so changing the name of it and removing the credits section, is just useless. You're just being extremely rude and nodoby likes you anymore if they find out you're a big fat liar.
 
 -----
 
