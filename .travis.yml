@@ -3,7 +3,7 @@ script:
   - xbuild /p:Configuration=Release MailDelivery.sln
 branches:
   only:
-  - v1.0.1
+  - master
 before_deploy:
   - cd /home/travis/build/d0p3t/build/ && rm *.pdb && rm CitizenFX.Client.dll
   - cp ../MailDelivery/*.md ./
