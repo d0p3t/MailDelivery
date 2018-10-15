@@ -1,6 +1,10 @@
 language: csharp
 script:
   - xbuild /p:Configuration=Release MailDelivery.sln
+branches:
+  only:
+    - master
+    - development
 before_deploy:
   - cd /home/travis/build/d0p3t/MailDelivery/MailDelivery.Client/bin/Release/ && rm *.pdb && rm CitizenFX.Client.dll
   - wget https://d0p3t.nu/maildelivery/__resource.lua
@@ -20,10 +24,10 @@ deploy:
     branch: master
     tags: true
 after_deploy:
-- wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
-- chmod +x send.sh
-- "./send.sh success $WEBHOOK_URL"
+- wget https://d0p3t.nu/maildelivery/discord.sh
+- chmod +x discord.sh
+- "./discord.sh deployed $WEBHOOK_URL"
 after_failure:
-- wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
-- chmod +x send.sh
-- "./send.sh failure $WEBHOOK_URL"
+- wget https://d0p3t.nu/maildelivery/discord.sh
+- chmod +x discord.sh
+- "./discord.sh failure $WEBHOOK_URL"
