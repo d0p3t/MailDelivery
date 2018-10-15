@@ -147,6 +147,7 @@ namespace MaillDelivery.Client
         private static int _jobCooldown = 0;
         private static int _areaIndex = 0;
         private static int _testTotal = 0;
+        private static string _vanModel = "";
 
         public MailDelivery()
         {
@@ -206,7 +207,7 @@ namespace MaillDelivery.Client
                     {
                         var playerPed = Game.PlayerPed;
 
-                        if (!playerPed.IsSittingInVehicle() || playerPed.CurrentVehicle.Model.Hash != Convert.ToInt32(VehicleHash.Boxville4))
+                        if (!playerPed.IsSittingInVehicle() || playerPed.CurrentVehicle.Model.Hash != new Model(_vanModel).Hash)
                         {
                             Screen.DisplayHelpTextThisFrame("You are not driving a ~r~PostOP Boxville~s~! You can rent one at the ~g~Mail Delivery: Rental~s~.");
 
@@ -289,7 +290,7 @@ namespace MaillDelivery.Client
                     return;
                 }
 
-                if (playerPed.LastVehicle.Model.Hash != Convert.ToInt32(VehicleHash.Boxville4))
+                if (playerPed.LastVehicle.Model.Hash != new Model(_vanModel).Hash)
                 {
                     return;
                 }
@@ -411,7 +412,7 @@ namespace MaillDelivery.Client
 
                         var parkPos = VehicleSpawnPositions[_parkId];
 
-                        _jobVehicle = await World.CreateVehicle(VehicleHash.Boxville4, new Vector3(parkPos.X, parkPos.Y, parkPos.Z), parkPos.W);
+                        _jobVehicle = await World.CreateVehicle(new Model(_vanModel), new Vector3(parkPos.X, parkPos.Y, parkPos.Z), parkPos.W);
 
                         SetEntityAsMissionEntity(_jobVehicle.Handle, true, true);
 
@@ -535,6 +536,7 @@ namespace MaillDelivery.Client
             _maxPayment = GetConvarInt("mail_max_payment", 1000);
             _rentalAmount = GetConvarInt("mail_rental_amount", 2000);
             _jobCooldown = GetConvarInt("mail_job_cooldown", 60000);
+            _vanModel = GetConvar("mail_van_model", "BOXVILLE4");
             _debug = Convert.ToBoolean(GetConvar("mail_debug", "false"));
         }
         private Blip CreateBlip(Vector3 position, BlipSprite sprite, BlipColor color, string name, bool shortRange = true, float scale = 0.86f)
