@@ -14,8 +14,7 @@ before_deploy:
   - cd /home/travis/build/d0p3t/MailDelivery/MailDelivery.Client/bin/Release/ && git tag $version
 deploy:
   provider: releases
-  api_key:
-    secure: $DEPLOY_KEY
+  api_key: $DEPLOY_KEY
   file: "/home/travis/build/d0p3t/MailDelivery/MailDelivery.Client/bin/Release/maildelivery-$version.zip"
   skip_cleanup: true
   prerelease: false
@@ -25,7 +24,7 @@ deploy:
     repo: d0p3t/MailDelivery
     branch:
       - master
-after_success:
+after_deploy:
 - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
 - chmod +x send.sh
 - "./send.sh success $WEBHOOK_URL"
