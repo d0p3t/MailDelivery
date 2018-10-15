@@ -19,6 +19,7 @@ deploy:
   on:
     repo: d0p3t/MailDelivery
     tags: true
+    all_branches: true
 after_deploy:
 - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
 - chmod +x send.sh
