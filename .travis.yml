@@ -18,7 +18,6 @@ deploy:
   name: "MailDelivery $TRAVIS_TAG"
   on:
     repo: d0p3t/MailDelivery
-    branch: master
     tags: true
 after_deploy:
 - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
