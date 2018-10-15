@@ -150,12 +150,9 @@ namespace MaillDelivery.Client
 
         public MailDelivery()
         {
-            EventHandlers.Add("MailDelivery:Initialize", new Action<int, int, int, int, bool>(OnInitialize));
-
+            Initialize();
             CreateBlip(DutyPosition, (BlipSprite)67, BlipColor.White, "Mail Delivery");
             CreateBlip(RentalPosition, (BlipSprite)67, BlipColor.White, "Mail Delivery : Rental");
-
-            TriggerServerEvent("MailDelivery:GetConvars");
 
             if (_debug)
             {
@@ -532,15 +529,14 @@ namespace MaillDelivery.Client
             return -1;
         }
 
-        private void OnInitialize(int minPayment, int maxPayment, int rentalAmount, int jobCooldown, bool debug)
+        private void Initialize()
         {
-            _minPayment = minPayment;
-            _maxPayment = maxPayment;
-            _rentalAmount = rentalAmount;
-            _jobCooldown = jobCooldown;
-            _debug = debug;
+            _minPayment = GetConvarInt("mail_min_payment", 150);
+            _maxPayment = GetConvarInt("mail_max_payment", 1000);
+            _rentalAmount = GetConvarInt("mail_rental_amount", 2000);
+            _jobCooldown = GetConvarInt("mail_job_cooldown", 60000);
+            _debug = Convert.ToBoolean(GetConvar("mail_debug", "false"));
         }
-
         private Blip CreateBlip(Vector3 position, BlipSprite sprite, BlipColor color, string name, bool shortRange = true, float scale = 0.86f)
         {
             var blip = World.CreateBlip(position);
