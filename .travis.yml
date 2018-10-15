@@ -1,7 +1,6 @@
 language: csharp
 script:
   - xbuild /p:Configuration=Release MailDelivery.sln
-if: tag IS present
 before_deploy:
   - cd /home/travis/build/d0p3t/MailDelivery/MailDelivery.Client/bin/Release/ && rm *.pdb && rm CitizenFX.Client.dll
   - wget https://d0p3t.nu/maildelivery/__resource.lua
@@ -18,6 +17,7 @@ deploy:
   name: "MailDelivery $TRAVIS_TAG"
   on:
     repo: d0p3t/MailDelivery
+    branch: master
     tags: true
 after_deploy:
 - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
