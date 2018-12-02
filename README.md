@@ -4,7 +4,7 @@
 
 ##### Standalone mail delivery job for Paleto Bay, Grapeseed and Sandy Shores
 
-<img src="https://forum.fivem.net/uploads/default/original/3X/f/b/fb4fa18035008547dd6085f6faa7a5b6eeb1387b.jpeg" width="690" height="194">
+<img src="https://i.imgur.com/X6aKZjg.jpg" width="690" height="194">
 
 ![Version](https://img.shields.io/badge/version-1.0.1-green.svg) [![Build Status](https://travis-ci.org/d0p3t/MailDelivery.svg?branch=master)](https://travis-ci.org/d0p3t/MailDelivery) [![Discord](https://img.shields.io/discord/330910293934997504.svg)](https://discord.gg/bSd4cYJ)
 
