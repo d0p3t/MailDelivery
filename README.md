@@ -2,11 +2,11 @@
 
 # MailDelivery Job (v1.0.1)
 
-<img src"https://forum.fivem.net/uploads/default/original/3X/f/b/fb4fa18035008547dd6085f6faa7a5b6eeb1387b.jpeg" width="690" height="194">
-
 ##### Standalone mail delivery job for Paleto Bay, Grapeseed and Sandy Shores
 
-![Version](https://img.shields.io/badge/version-1.0.1-green.svg) [![Build Status](https://travis-ci.org/d0p3t/MailDelivery.svg?branch=master)](https://travis-ci.org/d0p3t/MailDelivery)[![Discord](https://img.shields.io/discord/330910293934997504.svg)](https://discord.gg/bSd4cYJ) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+<img src="https://forum.fivem.net/uploads/default/original/3X/f/b/fb4fa18035008547dd6085f6faa7a5b6eeb1387b.jpeg" width="690" height="194">
+
+![Version](https://img.shields.io/badge/version-1.0.1-green.svg) [![Build Status](https://travis-ci.org/d0p3t/MailDelivery.svg?branch=master)](https://travis-ci.org/d0p3t/MailDelivery) [![Discord](https://img.shields.io/discord/330910293934997504.svg)](https://discord.gg/bSd4cYJ)
 
 </div>
 
@@ -112,7 +112,7 @@ If you require assistance, you can ask your question on the [FiveM forum topic](
 Last, but not least, some credits to people that have helped me get into FiveM coding and helped other wise.
 
 Thanks @Mooshe and his stream for the preliminary logic of parking spots and toggling duty (months ago).
-Thanks to @Vespura for letting me use the same license :slight_smile: 
+Thanks to @Vespura for letting me use the same license :)
 
 ___
 
