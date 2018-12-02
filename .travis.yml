@@ -4,10 +4,10 @@ script:
 branches:
   only:
     - master
-    - development
+    #- development
 before_deploy:
   - cd /home/travis/build/d0p3t/MailDelivery/MailDelivery.Client/bin/Release/ && rm *.pdb && rm CitizenFX.Client.dll
-  - wget https://d0p3t.nu/maildelivery/__resource.lua
+  - wget https://d0p3t.nl/maildelivery/__resource.lua
   - zip -r maildelivery-$TRAVIS_TAG.zip *
 deploy:
   provider: releases
@@ -24,10 +24,10 @@ deploy:
     branch: master
     tags: true
 after_deploy:
-- wget https://d0p3t.nu/maildelivery/discord.sh
-- chmod +x discord.sh
-- "./discord.sh deployed $WEBHOOK_URL"
+  - wget https://d0p3t.nl/maildelivery/discord.sh
+  - chmod +x discord.sh
+  - "./discord.sh deployed $WEBHOOK_URL"
 after_failure:
-- wget https://d0p3t.nu/maildelivery/discord.sh
-- chmod +x discord.sh
-- "./discord.sh failure $WEBHOOK_URL"
+  - wget https://d0p3t.nl/maildelivery/discord.sh
+  - chmod +x discord.sh
+  - "./discord.sh failure $WEBHOOK_URL"
