@@ -1,6 +1,7 @@
 language: csharp
-script:
-  - xbuild /p:Configuration=Release MailDelivery.sln
+solution: MailDelivery.sln
+#script:
+#  - xbuild /p:Configuration=Release MailDelivery.sln
 branches:
   only:
     - master
