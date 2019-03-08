@@ -132,14 +132,14 @@ namespace MaillDelivery.Client
 
         private static bool _isFirstTick = true;
         private static bool _debug = false;
-        private bool _isOnDuty;
+        private static bool _isOnDuty = false;
 
         private static Random rnd = new Random();
         private Vehicle _jobVehicle;
 
         private string _currentArea = "";
-        private List<Vector3> _currentAreaDeliveryPositions = new List<Vector3>();
-        private List<Blip> _currentAreaDeliveryBlips = new List<Blip>();
+        private static List<Vector3> _currentAreaDeliveryPositions = new List<Vector3>();
+        private static List<Blip> _currentAreaDeliveryBlips = new List<Blip>();
 
         private static int _minPayment = 0;
         private static int _maxPayment = 0;
