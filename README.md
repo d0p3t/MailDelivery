@@ -1,12 +1,12 @@
 <div align="center">
 
-# MailDelivery Job (v1.0.1)
+# MailDelivery Job (v1.0.2)
 
 ##### Standalone mail delivery job for Paleto Bay, Grapeseed and Sandy Shores
 
 <img src="https://i.imgur.com/X6aKZjg.jpg" width="690" height="194">
 
-![Version](https://img.shields.io/badge/version-1.0.1-green.svg) [![Build Status](https://travis-ci.org/d0p3t/MailDelivery.svg?branch=master)](https://travis-ci.org/d0p3t/MailDelivery) [![Discord](https://img.shields.io/discord/330910293934997504.svg)](https://discord.gg/bSd4cYJ)
+![Version](https://img.shields.io/badge/version-1.0.2-green.svg) [![Build Status](https://travis-ci.org/d0p3t/MailDelivery.svg?branch=master)](https://travis-ci.org/d0p3t/MailDelivery) [![Build Status](https://dev.azure.com/d0p3t/MailDelivery/_apis/build/status/d0p3t.MailDelivery?branchName=master)](https://dev.azure.com/d0p3t/MailDelivery/_build/latest?definitionId=1&branchName=master) [![Discord](https://img.shields.io/discord/330910293934997504.svg)](https://discord.gg/bSd4cYJ)
 
 </div>
 
@@ -35,6 +35,7 @@ Written fully in C#.
 * Rental vans are spawned in one of the free parking spots.
 * Configurable min/max pay per delivery and other settings using **ConVars**
 * Adaptable to your own system by using server events for payment and rental costs
+* **Customize** all blip sprites and colors using ConVars
 
 ___
 
@@ -79,17 +80,40 @@ You can configure various aspects of the job using ConVars. Below is the list of
 **Name:** "mail_rental_amount" (_Default: 2000_)
 **Description:** The rental cost when renting a mail delivery van via the rental spot.
 
+**Name:** "mail_rental_blip_sprite" (_Default: 67_)
+**Description:** Sets the blip sprite of the rental location. By default a truck sprite.
+
+**Name:** "mail_rental_blip_color" (_Default: 0_)
+**Description:** Sets the blip color of the rental location. By default white.
+
 **Name:** "mail_job_cooldown" (_Default: 60000_)
 **Description:** Sets the cooldown time between going on/off duty. A security measure to prevent people from getting the optimal route.
 
+**Name:** "mail_job_blip_sprite" (_Default: 67_)
+**Description:** Sets the blip sprite of the on-duty location. By default a truck sprite.
+
+**Name:** "mail_job_blip_color" (_Default: 0_)
+**Description:** Sets the blip color of the on-duty location. By default white.
+
 **Name:** "mail_van_model" (_Default: "BOXVILLE4"_)
 **Description:** Sets the van model required to start the delivery job. Also the model for the rental spot.
+
+**Name:** "mail_delivery_blip_sprite" (_Default: 164_)
+**Description:** Sets the blip sprites of the delivery locations. By default a flag.
+
+**Name:** "mail_delivery_blip_color" (_Default: 66_)
+**Description:** Sets the blip color of the delivery locations. By default yellow.
 
 **Name:** "mail_debug" (Default:  false)
 **Description:** A debug flag for developers (Only set this convar when developing!)
 
 ---
 ## Changelog
+**v1.0.2**
+* New default delivery points blip
+* Added blip customization convars
+* CI: Added Azure DevOps for faster builds. Releases process still on TravisCI
+
 **v1.0.1**
 * Ability to use your own custom van model
 * Moved ConVars to client side due to new FiveM feature
