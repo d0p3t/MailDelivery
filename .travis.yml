@@ -1,7 +1,7 @@
 language: csharp
 solution: MailDelivery.sln
 before_deploy:
-  - cd /home/travis/build/d0p3t/MailDelivery/MailDelivery.Client/bin/Release/ && rm *.pdb && rm CitizenFX.Core.Client.dll
+  - cd /home/travis/build/d0p3t/MailDelivery/MailDelivery.Client/bin/Release/ && rm *.pdb && rm *.xml && rm CitizenFX.Core.Client.dll
   - wget https://d0p3t.nl/maildelivery/__resource.lua
   - zip -r maildelivery-$TRAVIS_TAG.zip *
 deploy:
