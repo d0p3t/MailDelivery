@@ -132,19 +132,25 @@ namespace MaillDelivery.Client
 
         private static bool _isFirstTick = true;
         private static bool _debug = false;
-        private bool _isOnDuty;
+        private static bool _isOnDuty = false;
 
         private static Random rnd = new Random();
         private Vehicle _jobVehicle;
 
         private string _currentArea = "";
-        private List<Vector3> _currentAreaDeliveryPositions = new List<Vector3>();
-        private List<Blip> _currentAreaDeliveryBlips = new List<Blip>();
+        private static List<Vector3> _currentAreaDeliveryPositions = new List<Vector3>();
+        private static List<Blip> _currentAreaDeliveryBlips = new List<Blip>();
 
         private static int _minPayment = 0;
         private static int _maxPayment = 0;
         private static int _rentalAmount = 0;
+        private static int _rentalBlipSprite = 0;
+        private static int _rentalBlipColor = 0;
         private static int _jobCooldown = 0;
+        private static int _jobBlipSprite = 0;
+        private static int _jobBlipColor = 0;
+        private static int _deliveryBlipSprite = 0;
+        private static int _deliveryBlipColor = 0;
         private static int _areaIndex = 0;
         private static int _testTotal = 0;
         private static string _vanModel = "";
@@ -152,8 +158,8 @@ namespace MaillDelivery.Client
         public MailDelivery()
         {
             Initialize();
-            CreateBlip(DutyPosition, (BlipSprite)67, BlipColor.White, "Mail Delivery");
-            CreateBlip(RentalPosition, (BlipSprite)67, BlipColor.White, "Mail Delivery : Rental");
+            CreateBlip(DutyPosition, (BlipSprite)_jobBlipSprite, (BlipColor)_jobBlipColor, "Mail Delivery");
+            CreateBlip(RentalPosition, (BlipSprite)_rentalBlipSprite, (BlipColor)_rentalBlipColor, "Mail Delivery : Rental");
 
             if (_debug)
             {
@@ -164,17 +170,17 @@ namespace MaillDelivery.Client
 
                 foreach (var pos in DeliveryAreas["Grapeseed"])
                 {
-                    CreateBlip(pos, BlipSprite.PointOfInterest, BlipColor.Red, "POI GrapeSeed");
+                    CreateBlip(pos, (BlipSprite)_deliveryBlipSprite, BlipColor.Red, "POI GrapeSeed");
                 }
 
                 foreach (var pos in DeliveryAreas["Paleto Bay"])
                 {
-                    CreateBlip(pos, BlipSprite.PointOfInterest, BlipColor.FranklinGreen, "POI Paleto Bay");
+                    CreateBlip(pos, (BlipSprite)_deliveryBlipSprite, BlipColor.FranklinGreen, "POI Paleto Bay");
                 }
 
                 foreach (var pos in DeliveryAreas["Sandy Shores"])
                 {
-                    CreateBlip(pos, BlipSprite.PointOfInterest, BlipColor.TrevorOrange, "POI Sandy Shores");
+                    CreateBlip(pos, (BlipSprite)_deliveryBlipSprite, BlipColor.TrevorOrange, "POI Sandy Shores");
                 }
 
                 Tick += OnTestTick;
@@ -239,7 +245,7 @@ namespace MaillDelivery.Client
 
                         foreach (var pos in _currentAreaDeliveryPositions)
                         {
-                            var b = CreateBlip(pos, BlipSprite.PointOfInterest, BlipColor.Yellow, "Delivery Point", false, 1f);
+                            var b = CreateBlip(pos, (BlipSprite)_deliveryBlipSprite, (BlipColor)_deliveryBlipColor, "Delivery Point", false, 1f);
                             _currentAreaDeliveryBlips.Add(b);
                         }
 
@@ -535,8 +541,14 @@ namespace MaillDelivery.Client
             _minPayment = GetConvarInt("mail_min_payment", 150);
             _maxPayment = GetConvarInt("mail_max_payment", 1000);
             _rentalAmount = GetConvarInt("mail_rental_amount", 2000);
+            _rentalBlipSprite = GetConvarInt("mail_rental_blip_sprite", 67);
+            _rentalBlipColor = GetConvarInt("mail_rental_blip_color", 0);
             _jobCooldown = GetConvarInt("mail_job_cooldown", 60000);
+            _jobBlipSprite = GetConvarInt("mail_job_blip_sprite", 67);
+            _jobBlipColor = GetConvarInt("mail_job_blip_sprite", 0);
             _vanModel = GetConvar("mail_van_model", "BOXVILLE4");
+            _deliveryBlipSprite = GetConvarInt("mail_delivery_blip_sprite", 164);
+            _deliveryBlipColor = GetConvarInt("mail_delivery_blip_color", 66);
             _debug = Convert.ToBoolean(GetConvar("mail_debug", "false"));
         }
         private Blip CreateBlip(Vector3 position, BlipSprite sprite, BlipColor color, string name, bool shortRange = true, float scale = 0.86f)
