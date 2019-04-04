@@ -1,6 +1,15 @@
 trigger:
-- master
+  batch: true
+  tags:
+    include:
+    - v*
+  branches:
+    include:
+    - master
 
+pr:
+- master
+ 
 pool:
   vmImage: 'VS2017-Win2016'
 
