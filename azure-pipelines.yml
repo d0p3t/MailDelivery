@@ -27,11 +27,11 @@ steps:
 
 - script: |
     echo "Copy build to staging"
-    xcopy $(Build.SourcesDirectory)\MailDelivery\MailDelivery.Client\bin\Release $(Build.ArtifactStagingDirectory) /E
+    xcopy $(Build.SourcesDirectory)\MailDelivery\MailDelivery.Client\bin\Release\*.net.dll $(Build.ArtifactStagingDirectory)
 
 - script: |
     echo "Copy __resource.lua"
-    xcopy $(Build.SourcesDirectory)\__resource.lua $(Build.ArtifactStagingDirectory) /E
+    xcopy $(Build.SourcesDirectory)\MailDelivery\__resource.lua $(Build.ArtifactStagingDirectory)
     
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts'
