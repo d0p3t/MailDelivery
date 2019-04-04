@@ -6,7 +6,9 @@
 
 <img src="https://i.imgur.com/X6aKZjg.jpg" width="690" height="194">
 
-![Version](https://img.shields.io/badge/version-1.0.2-green.svg) [![Build Status](https://travis-ci.org/d0p3t/MailDelivery.svg?branch=master)](https://travis-ci.org/d0p3t/MailDelivery) [![Build Status](https://dev.azure.com/d0p3t/MailDelivery/_apis/build/status/d0p3t.MailDelivery?branchName=master)](https://dev.azure.com/d0p3t/MailDelivery/_build/latest?definitionId=1&branchName=master) [![Discord](https://img.shields.io/discord/330910293934997504.svg)](https://discord.gg/bSd4cYJ)
+![Version](https://img.shields.io/badge/version-1.0.2-green.svg) [![Build Status](https://travis-ci.org/d0p3t/MailDelivery.svg?branch=master)](https://travis-ci.org/d0p3t/MailDelivery) [![Discord](https://img.shields.io/discord/330910293934997504.svg)](https://discord.gg/bSd4cYJ)
+
+[![Build Status](https://dev.azure.com/d0p3t/MailDelivery/_apis/build/status/d0p3t.MailDelivery?branchName=master)](https://dev.azure.com/d0p3t/MailDelivery/_build/latest?definitionId=1&branchName=master) [![Hello](https://vsrm.dev.azure.com/d0p3t/_apis/public/Release/badge/3b0f092f-3e8a-4624-bb9c-23ba4e3390bd/2/2)](https://vsrm.dev.azure.com/d0p3t/_apis/public/Release/badge/3b0f092f-3e8a-4624-bb9c-23ba4e3390bd/2/2)
 
 </div>
 
