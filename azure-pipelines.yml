@@ -27,6 +27,7 @@ steps:
 
 - script: |
     echo "Copy build to staging"
+    dir $(Build.SourcesDirectory)\MailDelivery\MailDelivery.Client\bin\Release\
     xcopy $(Build.SourcesDirectory)\MailDelivery\MailDelivery.Client\bin\Release\MailDelivery.Client.net.dll $(Build.ArtifactStagingDirectory)
 
 - script: |
