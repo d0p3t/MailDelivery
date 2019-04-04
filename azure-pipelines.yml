@@ -1,11 +1,15 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
-- master
+  batch: true
+  tags:
+    include:
+    - v*
+  branches:
+    include:
+    - master
 
+pr:
+- master
+ 
 pool:
   vmImage: 'VS2017-Win2016'
 
@@ -18,18 +22,28 @@ steps:
 - task: NuGetToolInstaller@0
 
 - task: NuGetCommand@2
+  displayName: 'Restore NuGet'
   inputs:
     restoreSolution: '$(solution)'
 
 - task: VSBuild@1
+  displayName: 'Build solution'
   inputs:
     solution: '$(solution)'
-    msbuildArgs: /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    msbuildArgs: /p:DeployOnBuild=true /p:SkipInvalidConfigurations=true'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- script: |
+    echo "Copy build to staging"
+    dir $(Build.SourcesDirectory)\MailDelivery.Client\bin\Release\
+    xcopy $(Build.SourcesDirectory)\MailDelivery.Client\bin\Release\MailDelivery.Client.net.dll $(Build.ArtifactStagingDirectory)
+
+- script: |
+    echo "Copy __resource.lua"
+    xcopy $(Build.SourcesDirectory)\__resource.lua $(Build.ArtifactStagingDirectory)
+    
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts'
   inputs:
-    PathtoPublish: $(build.artifactstagingdirectory)
-    ArtifactName: 'PublishBuildArtifacts'
+    artifactName: 'maildelivery' 
