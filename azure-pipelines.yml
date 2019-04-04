@@ -27,7 +27,7 @@ steps:
 
 - script: |
     echo "Copy build to staging"
-    xcopy $(Build.SourcesDirectory)\MailDelivery\MailDelivery.Client\bin\Release\*.net.dll $(Build.ArtifactStagingDirectory)
+    xcopy $(Build.SourcesDirectory)\MailDelivery\MailDelivery.Client\bin\Release\MailDelivery.Client.net.dll $(Build.ArtifactStagingDirectory)
 
 - script: |
     echo "Copy __resource.lua"
