@@ -27,12 +27,12 @@ steps:
 
 - script: |
     echo "Copy build to staging"
-    dir $(Build.SourcesDirectory)\MailDelivery\MailDelivery.Client\bin\Release\
-    xcopy $(Build.SourcesDirectory)\MailDelivery\MailDelivery.Client\bin\Release\MailDelivery.Client.net.dll $(Build.ArtifactStagingDirectory)
+    dir $(Build.SourcesDirectory)\MailDelivery.Client\bin\Release\
+    xcopy $(Build.SourcesDirectory)\MailDelivery.Client\bin\Release\MailDelivery.Client.net.dll $(Build.ArtifactStagingDirectory)
 
 - script: |
     echo "Copy __resource.lua"
-    xcopy $(Build.SourcesDirectory)\MailDelivery\__resource.lua $(Build.ArtifactStagingDirectory)
+    xcopy $(Build.SourcesDirectory)\__resource.lua $(Build.ArtifactStagingDirectory)
     
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts'
