@@ -1,8 +1,3 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
 - master
 
@@ -18,18 +13,25 @@ steps:
 - task: NuGetToolInstaller@0
 
 - task: NuGetCommand@2
+  displayName: 'Restore NuGet'
   inputs:
     restoreSolution: '$(solution)'
 
 - task: VSBuild@1
+  displayName: 'Build solution'
   inputs:
     solution: '$(solution)'
-    msbuildArgs: /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    msbuildArgs: /p:DeployOnBuild=true /p:SkipInvalidConfigurations=true'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- script: |
+    echo "Copy build to staging"
+    xcopy $(Build.SourcesDirectory)\MailDelivery\MailDelivery.Client\bin\Release $(Build.ArtifactStagingDirectory) /E
+
+- script: |
+    echo "Copy __resource.lua"
+    xcopy $(Build.SourcesDirectory)\__resource.lua $(Build.ArtifactStagingDirectory) /E
+    
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts'
-  inputs:
-    PathtoPublish: $(build.artifactstagingdirectory)
-    ArtifactName: 'PublishBuildArtifacts'
